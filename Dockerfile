@@ -1,4 +1,4 @@
-FROM python:3-alpine as builder
+FROM python:3.11.0a2-alpine as builder
 
 WORKDIR /home/python
 
@@ -13,7 +13,7 @@ RUN virtualenv --relocatable venv/
 ADD . /home/python/
 RUN venv/bin/python manage.py migrate
 
-FROM python:3-alpine
+FROM python:3.11.0a2-alpine
 
 WORKDIR /home/python
 COPY --from=builder /home/python /home/python
